@@ -1,0 +1,64 @@
+seed: 42
+
+openai:
+  model: gpt-4o
+  director_temperature: 0.7
+  composition_temperature: 0.2
+  style_temperature: 0.7
+  max_retries: 3
+
+retrieval:
+  knowledge_dir: knowledge
+  index_dir: outputs/kb_index
+  embedding_model: BAAI/bge-small-en-v1.5
+  top_k: 5
+
+layout:
+  width: 1024
+  height: 1024
+  liubai_threshold: 0.30
+  max_iterations: 5
+  overlap_lambda: 0.10
+  blank_labels:
+    - blank
+    - sky
+    - fog
+    - mist
+    - water
+
+generation:
+  base_model: stabilityai/stable-diffusion-xl-base-1.0
+  controlnet_model: SargeZT/controlnet-sd-xl-1.0-seg
+  vae_model: madebyollin/sdxl-vae-fp16-fix
+  lora_path: ""
+  lora_scale: 0.8
+  width: 1024
+  height: 1024
+  steps: 30
+  guidance_scale: 7.0
+  controlnet_scale: 0.85
+  regional_prompting: true
+  regional_strength: 0.75
+  negative_prompt: >
+    photorealistic, photograph, western oil painting, 3d render,
+    oversaturated, neon colors, glossy, malformed architecture,
+    illegible text, watermark, logo, low quality
+
+palette:
+  blank: [245, 242, 230]
+  sky: [180, 210, 230]
+  fog: [210, 210, 210]
+  mist: [220, 220, 220]
+  water: [100, 160, 200]
+  mountain: [120, 90, 60]
+  rock: [100, 80, 70]
+  vegetation: [55, 120, 65]
+  pine: [30, 90, 50]
+  tree: [60, 110, 60]
+  architecture: [190, 80, 70]
+  figure: [220, 170, 120]
+  boat: [160, 110, 70]
+  bird: [210, 150, 70]
+  flower: [220, 100, 130]
+  ground: [150, 120, 80]
+  unknown: [128, 128, 128]
